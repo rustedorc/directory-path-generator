@@ -8,7 +8,7 @@ def tree_gen(*ignore, path: Optional[pathlib.Path] = None, output=sys.stdout) ->
     path = path if path is not None else pathlib.Path("./")
     for p in sorted(path.rglob("*")):
         parts = p.relative_to(path).parts
-        if any(bool(i in parts) for i in ignore) or any(bool(i.startswith(".") for i in parts):
+        if any(bool(i in parts) for i in ignore) or any(i.startswith(".") for i in parts):
             continue
         depth = len(parts)
         hashes = "#" * depth
